@@ -52,7 +52,7 @@ export default function Hero() {
         </div>
         <div className="flex gap-6 mt-2">
           <a
-            href="https://github.com/hoang-huynh-hai"
+            href="https://github.com/haihhdev"
             aria-label="Github"
             className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >

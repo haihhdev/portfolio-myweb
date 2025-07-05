@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react"
+import { motion } from "framer-motion";
+import { Github, Linkedin, Twitter, Mail, Heart } from "lucide-react";
 
 export default function Footer() {
   const socialLinks = [
@@ -9,7 +9,7 @@ export default function Footer() {
     { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
     { icon: Mail, href: "mailto:john.doe@example.com", label: "Email" },
-  ]
+  ];
 
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12">
@@ -33,7 +33,10 @@ export default function Footer() {
                 className="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors duration-300 group"
                 aria-label={social.label}
               >
-                <social.icon size={20} className="group-hover:text-white transition-colors duration-300" />
+                <social.icon
+                  size={20}
+                  className="group-hover:text-white transition-colors duration-300"
+                />
               </motion.a>
             ))}
           </motion.div>
@@ -50,9 +53,11 @@ export default function Footer() {
                 key={item}
                 whileHover={{ scale: 1.05 }}
                 onClick={() => {
-                  const element = document.querySelector(`#${item.toLowerCase()}`)
+                  const element = document.querySelector(
+                    `#${item.toLowerCase()}`
+                  );
                   if (element) {
-                    element.scrollIntoView({ behavior: "smooth" })
+                    element.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
                 className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -73,11 +78,13 @@ export default function Footer() {
             className="text-center text-gray-400 text-sm"
           >
             <p className="flex items-center justify-center gap-2">
-              © {new Date().getFullYear()} John Doe. Made with
+              © {new Date().getFullYear()} Hoang Huynh Hai. Made with
               <Heart size={16} className="text-red-500 fill-current" />
               and lots of coffee.
             </p>
-            <p className="mt-2">Built with Next.js, Tailwind CSS, and Framer Motion</p>
+            <p className="mt-2">
+              Built with Next.js, Tailwind CSS, and Express.js
+            </p>
           </motion.div>
 
           {/* Back to Top */}
@@ -88,12 +95,22 @@ export default function Footer() {
             className="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-colors duration-300"
             aria-label="Back to top"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 10l7-7m0 0l7 7m-7-7v18"
+              />
             </svg>
           </motion.button>
         </div>
       </div>
     </footer>
-  )
+  );
 }
