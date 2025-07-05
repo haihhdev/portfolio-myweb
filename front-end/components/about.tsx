@@ -12,16 +12,20 @@ export default function About() {
   const skills = [
     "React",
     "Next.js",
-    "TypeScript",
+    "Express",
     "Node.js",
     "Python",
-    "PostgreSQL",
+    "Java",
     "MongoDB",
     "AWS",
     "Docker",
     "Git",
     "Figma",
     "Tailwind CSS",
+    "Github Actions",
+    "ArgoCD",
+    "Kubernetes",
+    "Prometheus",
   ];
 
   return (

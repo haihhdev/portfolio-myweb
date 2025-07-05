@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
-import { Download, Calendar, MapPin } from "lucide-react"
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Download, Calendar, MapPin } from "lucide-react";
 
 export default function Resume() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const experiences = [
     {
@@ -43,7 +43,7 @@ export default function Resume() {
         "Participated in agile development processes and code reviews",
       ],
     },
-  ]
+  ];
 
   const education = [
     {
@@ -51,7 +51,8 @@ export default function Resume() {
       school: "Stanford University",
       location: "Stanford, CA",
       period: "2017 - 2019",
-      description: "Specialized in Software Engineering and Human-Computer Interaction",
+      description:
+        "Specialized in Software Engineering and Human-Computer Interaction",
     },
     {
       degree: "Bachelor of Science in Computer Science",
@@ -60,7 +61,7 @@ export default function Resume() {
       period: "2013 - 2017",
       description: "Magna Cum Laude, Dean's List for 6 semesters",
     },
-  ]
+  ];
 
   return (
     <section id="resume" className="py-20 bg-white dark:bg-gray-900">
@@ -72,16 +73,18 @@ export default function Resume() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Resume</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Resume
+          </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <a
+            href="/Hoang-Huynh-Hai-DevOps Intern-CV.pdf"
+            download
             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             <Download size={20} />
             Download PDF Resume
-          </motion.button>
+          </a>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -91,20 +94,28 @@ export default function Resume() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Work Experience</h3>
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+              Work Experience
+            </h3>
             <div className="space-y-8">
               {experiences.map((exp, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                  }
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                   className="relative pl-8 border-l-2 border-blue-600 dark:border-blue-400"
                 >
                   <div className="absolute -left-2 top-0 w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full"></div>
                   <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{exp.title}</h4>
-                    <div className="text-blue-600 dark:text-blue-400 font-semibold mb-2">{exp.company}</div>
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {exp.title}
+                    </h4>
+                    <div className="text-blue-600 dark:text-blue-400 font-semibold mb-2">
+                      {exp.company}
+                    </div>
                     <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                       <div className="flex items-center gap-1">
                         <Calendar size={16} />
@@ -117,8 +128,13 @@ export default function Resume() {
                     </div>
                     <ul className="space-y-2">
                       {exp.description.map((item, i) => (
-                        <li key={i} className="text-gray-600 dark:text-gray-300 flex items-start">
-                          <span className="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                        <li
+                          key={i}
+                          className="text-gray-600 dark:text-gray-300 flex items-start"
+                        >
+                          <span className="text-blue-600 dark:text-blue-400 mr-2">
+                            •
+                          </span>
                           {item}
                         </li>
                       ))}
@@ -135,20 +151,28 @@ export default function Resume() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Education</h3>
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+              Education
+            </h3>
             <div className="space-y-8">
               {education.map((edu, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  animate={
+                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                  }
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   className="relative pl-8 border-l-2 border-green-600 dark:border-green-400"
                 >
                   <div className="absolute -left-2 top-0 w-4 h-4 bg-green-600 dark:bg-green-400 rounded-full"></div>
                   <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{edu.degree}</h4>
-                    <div className="text-green-600 dark:text-green-400 font-semibold mb-2">{edu.school}</div>
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                      {edu.degree}
+                    </h4>
+                    <div className="text-green-600 dark:text-green-400 font-semibold mb-2">
+                      {edu.school}
+                    </div>
                     <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                       <div className="flex items-center gap-1">
                         <Calendar size={16} />
@@ -159,7 +183,9 @@ export default function Resume() {
                         {edu.location}
                       </div>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300">{edu.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {edu.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -168,5 +194,5 @@ export default function Resume() {
         </div>
       </div>
     </section>
-  )
+  );
 }

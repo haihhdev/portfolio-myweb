@@ -28,7 +28,7 @@ export default function Hero() {
           Hi, I'm <span className="text-blue-600">Hoang Huynh Hai</span>
         </h1>
         <h2 className="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-6 font-medium">
-          Full Stack Developer & UI/UX Designer
+          DevOps Engineer & Full Stack Developer
         </h2>
         <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl">
           I create beautiful, functional, and user-centered digital experiences.
@@ -43,7 +43,7 @@ export default function Hero() {
             <Mail size={20} /> Get In Touch
           </a>
           <a
-            href="/cv.pdf"
+            href="/Hoang-Huynh-Hai-DevOps Intern-CV.pdf"
             download
             className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg font-semibold transition-colors duration-200 w-full sm:w-auto"
           >
@@ -84,16 +84,6 @@ export default function Hero() {
             className="w-full h-full object-cover rounded-full"
           />
         </div>
-        {/* Nút vẫy tay */}
-        <button
-          className="absolute bottom-0 right-0 md:-right-8 md:bottom-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-20 h-20 flex items-center justify-center shadow-2xl border-8 border-white dark:border-gray-900 text-3xl transition-transform duration-200"
-          style={{ transform: "translate(30%, 30%)" }}
-          aria-label="Say Hi"
-        >
-          <span role="img" aria-label="wave">
-            👋
-          </span>
-        </button>
       </div>
     </section>
   );
