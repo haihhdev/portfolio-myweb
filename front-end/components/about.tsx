@@ -1,32 +1,35 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
 import Image from "next/image";
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const skills = [
-    "React",
-    "Next.js",
-    "Express",
-    "Node.js",
-    "Python",
-    "Java",
-    "MongoDB",
-    "AWS",
-    "Docker",
-    "Git",
-    "Figma",
-    "Tailwind CSS",
-    "Github Actions",
-    "ArgoCD",
-    "Kubernetes",
-    "Prometheus",
-  ];
+  // State for about data
+  const [about, setAbout] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchAbout = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch("http://localhost:5001/api/about");
+        if (!res.ok) throw new Error("Failed to fetch about data");
+        const data = await res.json();
+        setAbout(data);
+      } catch (err: any) {
+        setError(err.message || "Error fetching about data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAbout();
+  }, []);
 
   return (
     <section id="about" className="py-20 bg-white dark:bg-gray-900">
@@ -68,43 +71,64 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-6"
           >
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of
-                experience creating digital solutions that bridge the gap
-                between design and functionality. I specialize in modern web
-                technologies and have a keen eye for user experience.
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies,
-                contributing to open-source projects, or sharing knowledge with
-                the developer community.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                Technical Skills
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {skills.map((skill, index) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={
-                      isInView
-                        ? { opacity: 1, scale: 1 }
-                        : { opacity: 0, scale: 0.8 }
-                    }
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors duration-200 cursor-default"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
+            {loading ? (
+              <p className="text-gray-500">Loading...</p>
+            ) : error ? (
+              <p className="text-red-500">{error}</p>
+            ) : about ? (
+              <>
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {about.description}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+                    Technical Skills
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    {(about.skills || []).map(
+                      (skill: string, index: number) => (
+                        <motion.span
+                          key={skill}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={
+                            isInView
+                              ? { opacity: 1, scale: 1 }
+                              : { opacity: 0, scale: 0.8 }
+                          }
+                          transition={{
+                            duration: 0.5,
+                            delay: 0.6 + index * 0.1,
+                          }}
+                          whileHover={{ scale: 1.05 }}
+                          className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors duration-200 cursor-default"
+                        >
+                          {skill}
+                        </motion.span>
+                      )
+                    )}
+                  </div>
+                </div>
+                {about.certifications && about.certifications.length > 0 && (
+                  <div>
+                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4 mt-6">
+                      Certifications
+                    </h3>
+                    <ul className="list-disc pl-5">
+                      {about.certifications.map((cert: any, idx: number) => (
+                        <li
+                          key={idx}
+                          className="text-gray-600 dark:text-gray-300"
+                        >
+                          {cert.name} - {cert.issuer} ({cert.date})
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </>
+            ) : null}
           </motion.div>
         </div>
       </div>
