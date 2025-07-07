@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Settings } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface NavbarProps {
   darkMode: boolean;
@@ -12,6 +13,7 @@ interface NavbarProps {
 export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +37,10 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
       element.scrollIntoView({ behavior: "smooth" });
     }
     setIsOpen(false);
+  };
+
+  const handleSettingsClick = () => {
+    router.push("/settings");
   };
 
   return (
@@ -78,6 +84,14 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleSettingsClick}
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+            >
+              <Settings size={20} />
+            </motion.button>
           </div>
 
           {/* Mobile Navigation Button */}
@@ -89,6 +103,14 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
               className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleSettingsClick}
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+            >
+              <Settings size={20} />
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}

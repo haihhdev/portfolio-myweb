@@ -121,7 +121,7 @@ export default function Hero() {
       <div className="flex-1 flex flex-col items-center justify-center relative mt-12 md:mt-0">
         <div className="w-72 h-72 md:w-96 md:h-96 rounded-full border-8 border-white dark:border-gray-900 shadow-xl flex items-center justify-center relative overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img
-            src={avatarUrl || "/images/j97.jpg"}
+            src={avatarUrl || "/images/hhh.jpg"}
             alt={name + " Avatar"}
             className="w-full h-full object-cover rounded-full"
           />

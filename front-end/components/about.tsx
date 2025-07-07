@@ -56,12 +56,12 @@ export default function About() {
           >
             <div className="relative w-80 h-80 mx-auto lg:mx-0">
               <Image
-                src="/images/j97.jpg"
+                src="/images/hhh2.jpg"
                 alt="Profile"
                 fill
                 className="rounded-2xl object-cover shadow-2xl"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-600/20 to-purple-600/20"></div>
+              <div className="absolute inset-0 rounded-2x"></div>
             </div>
           </motion.div>
 

@@ -13,6 +13,8 @@ import {
   Twitter,
   Mail,
   Eye,
+  FileText,
+  ExternalLink,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -22,6 +24,7 @@ export default function ProfileEditor() {
     tagline: "Full-Stack Developer & UI/UX Designer",
     bio: "Creating digital experiences that matter",
     avatar: "/placeholder.svg?height=200&width=200",
+    cvUrl: "",
     socialLinks: {
       github: "https://github.com/johndoe",
       linkedin: "https://linkedin.com/in/johndoe",
@@ -44,6 +47,7 @@ export default function ProfileEditor() {
           tagline: data.title || prev.tagline,
           bio: data.description || prev.bio,
           avatar: data.avatarUrl || prev.avatar,
+          cvUrl: data.cvUrl || prev.cvUrl,
           socialLinks: {
             ...prev.socialLinks,
             github: data.socials?.github || prev.socialLinks.github,
@@ -101,6 +105,7 @@ export default function ProfileEditor() {
         title: formData.tagline,
         description: formData.bio,
         avatarUrl: formData.avatar,
+        cvUrl: formData.cvUrl,
       };
       const response = await fetch("http://localhost:5000/api/users/", {
         method: "PUT",
@@ -165,9 +170,10 @@ export default function ProfileEditor() {
           <div className="text-center">
             <div className="relative w-32 h-32 mx-auto mb-6">
               <Image
-                src={formData.avatar || "/placeholder.svg"}
+                src={formData.avatar || "/hhh.jpg"}
                 alt="Profile"
                 fill
+                sizes="(max-width: 768px) 100vw, 128px"
                 className="rounded-full object-cover border-4 border-white shadow-lg"
               />
             </div>
@@ -178,6 +184,22 @@ export default function ProfileEditor() {
               {formData.tagline}
             </p>
             <p className="text-blue-600 dark:text-blue-400">{formData.bio}</p>
+            {formData.cvUrl && (
+              <div className="mt-4">
+                <motion.a
+                  href={formData.cvUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                >
+                  <FileText size={16} />
+                  View CV
+                  <ExternalLink size={14} />
+                </motion.a>
+              </div>
+            )}
           </div>
         </motion.div>
       ) : (
@@ -200,6 +222,7 @@ export default function ProfileEditor() {
                     src={formData.avatar || "/placeholder.svg"}
                     alt="Profile"
                     fill
+                    sizes="(max-width: 768px) 100vw, 96px"
                     className="rounded-full object-cover border-4 border-gray-200 dark:border-gray-600"
                   />
                 </div>
@@ -264,6 +287,40 @@ export default function ProfileEditor() {
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 dark:bg-gray-700 dark:text-white hover:border-blue-400 dark:hover:border-blue-500 resize-none"
                   placeholder="Short bio or description"
                 />
+              </div>
+
+              {/* CV URL */}
+              <div>
+                <label className="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <FileText size={16} />
+                  CV/Resume URL
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="url"
+                    name="cvUrl"
+                    value={formData.cvUrl}
+                    onChange={handleInputChange}
+                    className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 dark:bg-gray-700 dark:text-white hover:border-blue-400 dark:hover:border-blue-500"
+                    placeholder="https://example.com/cv.pdf"
+                  />
+                  {formData.cvUrl && (
+                    <motion.a
+                      href={formData.cvUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center gap-2"
+                    >
+                      <ExternalLink size={16} />
+                      View
+                    </motion.a>
+                  )}
+                </div>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  Enter the URL to your CV/Resume PDF file
+                </p>
               </div>
             </div>
           </motion.div>
