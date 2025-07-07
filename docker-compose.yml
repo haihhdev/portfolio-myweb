@@ -1,0 +1,78 @@
+version: "3.8"
+
+services:
+  # User Project Service
+  user-project-service:
+    build:
+      context: ./back_end/user-project-service
+      dockerfile: Dockerfile
+    container_name: user-project-service
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGO_URI=${MONGO_URI}
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+  # About Service
+  about-service:
+    build:
+      context: ./back_end/about-service
+      dockerfile: Dockerfile
+    container_name: about-service
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=production
+      - PORT=5001
+      - MONGO_URI=${MONGO_URI}
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+  # Resume Service
+  resume-service:
+    build:
+      context: ./back_end/resume-service
+      dockerfile: Dockerfile
+    container_name: resume-service
+    ports:
+      - "5002:5002"
+    environment:
+      - NODE_ENV=production
+      - PORT=5002
+      - MONGO_URI=${MONGO_URI}
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+  # Frontend Next.js
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    container_name: portfolio-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_USER_PROJECT_API_URL=${NEXT_PUBLIC_USER_PROJECT_API_URL:-http://localhost:5000}
+      - NEXT_PUBLIC_ABOUT_API_URL=${NEXT_PUBLIC_ABOUT_API_URL:-http://localhost:5001}
+      - NEXT_PUBLIC_RESUME_API_URL=${NEXT_PUBLIC_RESUME_API_URL:-http://localhost:5002}
+    depends_on:
+      - user-project-service
+      - about-service
+      - resume-service
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge
+
+volumes:
+  node_modules:
