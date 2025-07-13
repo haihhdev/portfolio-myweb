@@ -1,3 +1,12 @@
 # Ignore all .env files
 .env
 *.env 
+node_modules
+.next
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production

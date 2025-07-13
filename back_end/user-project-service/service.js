@@ -13,7 +13,8 @@ const app = express();
 // Middlewares
 app.use(
   cors({
-    origin: "http://localhost:3000", // Cập nhật nếu frontend deploy
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+    credentials: true,
   })
 );
 app.use(express.json({ limit: "20mb" }));

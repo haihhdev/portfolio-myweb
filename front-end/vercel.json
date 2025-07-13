@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
+  "env": {
+    "NEXT_PUBLIC_USER_PROJECT_API_URL": "@next_public_user_project_api_url",
+    "NEXT_PUBLIC_ABOUT_API_URL": "@next_public_about_api_url",
+    "NEXT_PUBLIC_RESUME_API_URL": "@next_public_resume_api_url"
+  }
+}

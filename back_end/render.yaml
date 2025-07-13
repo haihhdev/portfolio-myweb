@@ -1,0 +1,51 @@
+services:
+  # User Project Service
+  - type: web
+    name: user-project-service
+    env: node
+    plan: free
+    buildCommand: cd user-project-service && npm install
+    startCommand: cd user-project-service && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://portfolio-myweb.vercel.app
+
+  # About Service
+  - type: web
+    name: about-service
+    env: node
+    plan: free
+    buildCommand: cd about-service && npm install
+    startCommand: cd about-service && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://portfolio-myweb.vercel.app
+
+  # Resume Service
+  - type: web
+    name: resume-service
+    env: node
+    plan: free
+    buildCommand: cd resume-service && npm install
+    startCommand: cd resume-service && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGO_URI
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://portfolio-myweb.vercel.app
