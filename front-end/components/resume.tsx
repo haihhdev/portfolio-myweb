@@ -11,21 +11,10 @@ export default function Resume() {
 
   const experiences = [
     {
-      title: "Senior Full-Stack Developer",
-      company: "Tech Innovations Inc.",
-      location: "San Francisco, CA",
-      period: "2022 - Present",
-      description: [
-        "Led development of microservices architecture serving 1M+ users",
-        "Mentored junior developers and established coding standards",
-        "Implemented CI/CD pipelines reducing deployment time by 60%",
-      ],
-    },
-    {
-      title: "Full-Stack Developer",
-      company: "Digital Solutions LLC",
-      location: "New York, NY",
-      period: "2020 - 2022",
+      title: "DevOps Engineer",
+      company: "ABC Company",
+      location: "Ho Chi Minh City, Vietnam",
+      period: "July 2024 - Present",
       description: [
         "Developed and maintained 15+ client web applications",
         "Collaborated with design team to implement pixel-perfect UIs",
@@ -33,33 +22,26 @@ export default function Resume() {
       ],
     },
     {
-      title: "Frontend Developer",
-      company: "StartupXYZ",
-      location: "Austin, TX",
-      period: "2019 - 2020",
+      title: "Full-Stack Developer",
+      company: "ABC Company",
+      location: "Ho Chi Minh City, Vietnam",
+      period: "2020 - 2022",
       description: [
-        "Built responsive web applications using React and TypeScript",
-        "Integrated third-party APIs and payment processing systems",
-        "Participated in agile development processes and code reviews",
+        "Developed and maintained 15+ client web applications",
+        "Collaborated with design team to implement pixel-perfect UIs",
+        "Optimized application performance improving load times by 40%",
       ],
     },
   ];
 
   const education = [
     {
-      degree: "Master of Science in Computer Science",
-      school: "Stanford University",
-      location: "Stanford, CA",
-      period: "2017 - 2019",
-      description:
-        "Specialized in Software Engineering and Human-Computer Interaction",
-    },
-    {
-      degree: "Bachelor of Science in Computer Science",
-      school: "University of California, Berkeley",
-      location: "Berkeley, CA",
-      period: "2013 - 2017",
-      description: "Magna Cum Laude, Dean's List for 6 semesters",
+      degree: "Bachelor of Information Technology",
+      school:
+        "University of Information Technology – Vietnam National University (UIT – VNUHCM)",
+      location: "Ho Chi Minh City, Vietnam",
+      period: "September 2022 - 2026",
+      description: "GPA: 3.33/4 (current)",
     },
   ];
 
