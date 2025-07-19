@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import SettingsSidebar from "@/components/settings/settings-sidebar";
 import ProfileEditor from "@/components/settings/profile-editor";
 import AboutEditor from "@/components/settings/about-editor";
