@@ -12,7 +12,12 @@ const app = express();
 // Middlewares
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+    origin: [
+      process.env.CORS_ORIGIN || "http://localhost:3000",
+      "https://portfolio-myweb-hai.vercel.app",
+      "https://portfolio-myweb-hai-git-main-hoang-hais-projects-6b077895.vercel.app",
+      "https://portfolio-myweb-lu97k9ol6-hoang-hais-projects-6b077895.vercel.app",
+    ],
     credentials: true,
   })
 );

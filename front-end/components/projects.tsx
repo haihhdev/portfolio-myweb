@@ -17,7 +17,9 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/projects/");
+        const res = await fetch(
+          process.env.NEXT_PUBLIC_USER_PROJECT_API_URL + "/api/projects/"
+        );
         if (!res.ok) throw new Error("Failed to fetch projects");
         const data = await res.json();
         // Map API fields to UI fields

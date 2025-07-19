@@ -41,7 +41,7 @@ export default function ProjectsManager() {
 
   // Fetch projects from API when mount
   useEffect(() => {
-    fetch("http://localhost:5000/api/projects/")
+    fetch(process.env.NEXT_PUBLIC_USER_PROJECT_API_URL + "/api/projects/")
       .then((res) => res.json())
       .then((data) => {
         // Chuyển đổi dữ liệu từ API về đúng định dạng Project
@@ -120,7 +120,7 @@ export default function ProjectsManager() {
       if (editingProject) {
         // Update project
         const res = await fetch(
-          `http://localhost:5000/api/projects/${editingProject.id}`,
+          `${process.env.NEXT_PUBLIC_USER_PROJECT_API_URL}/api/projects/${editingProject.id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -150,11 +150,14 @@ export default function ProjectsManager() {
         toast.success("Project updated successfully!");
       } else {
         // Create new project
-        const res = await fetch("http://localhost:5000/api/projects/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
+        const res = await fetch(
+          process.env.NEXT_PUBLIC_USER_PROJECT_API_URL + "/api/projects/",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          }
+        );
         if (!res.ok) throw new Error();
         const created = await res.json();
         setProjects((prev) => [
@@ -182,9 +185,12 @@ export default function ProjectsManager() {
   const deleteProject = async (id: string) => {
     if (window.confirm("Are you sure you want to delete this project?")) {
       try {
-        const res = await fetch(`http://localhost:5000/api/projects/${id}`, {
-          method: "DELETE",
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_USER_PROJECT_API_URL}/api/projects/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
         if (!res.ok) throw new Error();
         setProjects((prev) => prev.filter((p) => p.id !== id));
         toast.success("Project deleted successfully!");

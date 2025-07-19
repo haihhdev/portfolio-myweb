@@ -18,7 +18,9 @@ export default function About() {
     const fetchAbout = async () => {
       setLoading(true);
       try {
-        const res = await fetch("http://localhost:5001/api/about");
+        const res = await fetch(
+          process.env.NEXT_PUBLIC_ABOUT_API_URL + "/api/about"
+        );
         if (!res.ok) throw new Error("Failed to fetch about data");
         const data = await res.json();
         setAbout(data);

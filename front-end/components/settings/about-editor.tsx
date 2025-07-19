@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { Save, Plus, X, Eye, Trash2 } from "lucide-react";
 
-const API_URL = "http://localhost:5001/api/about";
+const API_URL = process.env.NEXT_PUBLIC_ABOUT_API_URL + "/api/about";
 
 export default function AboutEditor() {
   const [formData, setFormData] = useState({

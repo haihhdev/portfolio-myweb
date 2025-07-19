@@ -38,7 +38,7 @@ export default function ProfileEditor() {
 
   // Fetch dữ liệu user hiện tại từ API khi mount
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/")
+    fetch(process.env.NEXT_PUBLIC_USER_PROJECT_API_URL + "/api/users/")
       .then((res) => res.json())
       .then((data) => {
         setFormData((prev) => ({
@@ -107,13 +107,16 @@ export default function ProfileEditor() {
         avatarUrl: formData.avatar,
         cvUrl: formData.cvUrl,
       };
-      const response = await fetch("http://localhost:5000/api/users/", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_USER_PROJECT_API_URL + "/api/users/",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
       if (!response.ok) throw new Error("Failed to update profile");
       toast.success("Profile updated successfully!");
     } catch (error) {

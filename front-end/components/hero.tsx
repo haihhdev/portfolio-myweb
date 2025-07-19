@@ -15,7 +15,7 @@ export default function Hero() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users/")
+    fetch(process.env.NEXT_PUBLIC_USER_PROJECT_API_URL + "/api/users/")
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
