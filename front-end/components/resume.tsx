@@ -11,26 +11,11 @@ export default function Resume() {
 
   const experiences = [
     {
-      title: "DevOps Engineer",
-      company: "ABC Company",
-      location: "Ho Chi Minh City, Vietnam",
-      period: "July 2024 - Present",
-      description: [
-        "Developed and maintained 15+ client web applications",
-        "Collaborated with design team to implement pixel-perfect UIs",
-        "Optimized application performance improving load times by 40%",
-      ],
-    },
-    {
-      title: "Full-Stack Developer",
-      company: "ABC Company",
-      location: "Ho Chi Minh City, Vietnam",
-      period: "2020 - 2022",
-      description: [
-        "Developed and maintained 15+ client web applications",
-        "Collaborated with design team to implement pixel-perfect UIs",
-        "Optimized application performance improving load times by 40%",
-      ],
+      title: "TOEIC Listening and Reading",
+      company: "Score: 705/990",
+      // location: "Ho Chi Minh City, Vietnam",
+      period: "August 2024",
+      description: ["TOEIC Listening and Reading"],
     },
   ];
 
@@ -77,7 +62,7 @@ export default function Resume() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-              Work Experience
+              Certifications
             </h3>
             <div className="space-y-8">
               {experiences.map((exp, index) => (
@@ -103,10 +88,10 @@ export default function Resume() {
                         <Calendar size={16} />
                         {exp.period}
                       </div>
-                      <div className="flex items-center gap-1">
+                      {/* <div className="flex items-center gap-1">
                         <MapPin size={16} />
                         {exp.location}
-                      </div>
+                      </div> */}
                     </div>
                     <ul className="space-y-2">
                       {exp.description.map((item, i) => (
