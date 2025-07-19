@@ -84,14 +84,14 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </motion.button>
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleSettingsClick}
               className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
             >
               <Settings size={20} />
-            </motion.button>
+            </motion.button> */}
           </div>
 
           {/* Mobile Navigation Button */}
