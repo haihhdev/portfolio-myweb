@@ -125,7 +125,7 @@ export default function Contact() {
                     Email
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    hoanghuynhhai@vng.com.vn
+                    hoanghuynhhai10032004@gmail.com
                   </p>
                 </div>
               </motion.div>
@@ -145,7 +145,7 @@ export default function Contact() {
                     Phone
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    +1 (555) 123-4567
+                    039 218 3234
                   </p>
                 </div>
               </motion.div>
@@ -165,7 +165,7 @@ export default function Contact() {
                     Location
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Ho Chi Minh City, Vietnam
+                    Phường Linh Trung, Thủ Đức, TP. Hồ Chí Minh.
                   </p>
                 </div>
               </motion.div>

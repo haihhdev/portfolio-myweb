@@ -45,7 +45,7 @@ export default function Resume() {
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
           <a
-            href="/Hoang-Huynh-Hai-DevOps Intern-CV.pdf"
+            href="/Hoang_Huynh_Hai_DevOps Intern-CV.pdf"
             download
             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
