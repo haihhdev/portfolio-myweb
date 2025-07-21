@@ -45,8 +45,9 @@ export default function Resume() {
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
           <a
-            href="/HOANG_HUYNH_HAI_DevOps Intern-CV.pdf"
-            download
+            href="https://drive.google.com/uc?export=download&id=19MFaDhF6FUcBkxOQmsXjn3Y0t3G6mmOQ"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             <Download size={20} />
